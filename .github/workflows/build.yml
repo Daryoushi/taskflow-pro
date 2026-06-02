@@ -1,0 +1,52 @@
+name: Build Flutter APK
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+
+      - name: Create font directory
+        run: mkdir -p assets/fonts
+
+      - name: Download Vazirmatn fonts
+        run: |
+          wget -q "https://github.com/rastikerdar/vazirmatn/releases/download/v33.003/Vazirmatn-font-files.zip" -O vazirmatn.zip
+          unzip -q vazirmatn.zip -d vazirmatn_extracted
+          find vazirmatn_extracted -name "Vazirmatn-Regular.ttf" | head -1 | xargs -I{} cp {} assets/fonts/
+          find vazirmatn_extracted -name "Vazirmatn-Medium.ttf" | head -1 | xargs -I{} cp {} assets/fonts/
+          find vazirmatn_extracted -name "Vazirmatn-Bold.ttf" | head -1 | xargs -I{} cp {} assets/fonts/
+          echo "Fonts downloaded:"
+          ls -la assets/fonts/
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: taskflow-pro-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 30
