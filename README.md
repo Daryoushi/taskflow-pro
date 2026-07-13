@@ -74,7 +74,7 @@ flutter run
 
 ---
 
-### ۱. ساخت Keystore (یکبار انجام دهید)
+### ۱. ساخت Keystore
 ```bash
 keytool -genkey -v -keystore ~/my-release-key.jks \
   -keyalg RSA -keysize 2048 -validity 10000 \
@@ -117,6 +117,4 @@ build/app/outputs/bundle/release/app-release.aab
 
 ---
 
-## 📞 پشتیبانی
 
-برای سوال یا مشکل issue باز کنید.
