@@ -1,16 +1,6 @@
 # TaskFlow Pro - اپلیکیشن مدیریت وظایف
 
-یک اپلیکیشن To Do List کامل و حرفه‌ای برای بازار کافه بازار، ساخته‌شده با Flutter
-
----
-
-## 🆔 Application ID (یکتا برای کافه بازار)
-
-```
-ir.taskflowpro.app
-```
-
-این ID کاملاً یکتا و استاندارد ایرانی است (پسوند `ir.` برای ایران)
+یک اپلیکیشن To Do List کامل و حرفه‌ای ساخته‌شده با Flutter
 
 ---
 
@@ -84,8 +74,6 @@ flutter run
 
 ---
 
-## 📦 آماده‌سازی برای کافه بازار
-
 ### ۱. ساخت Keystore (یکبار انجام دهید)
 ```bash
 keytool -genkey -v -keystore ~/my-release-key.jks \
@@ -126,29 +114,6 @@ flutter build appbundle --release
 build/app/outputs/flutter-apk/app-release.apk
 # یا
 build/app/outputs/bundle/release/app-release.aab
-```
-
----
-
-## 🔧 تنظیمات کافه بازار
-
-| فیلد | مقدار |
-|------|-------|
-| **Application ID** | `ir.taskflowpro.app` |
-| **Package Name** | `ir.taskflowpro.app` |
-| **Min SDK** | 21 (Android 5.0) |
-| **Target SDK** | 34 (Android 14) |
-| **Version Code** | 1 |
-| **Version Name** | 1.0.0 |
-
----
-
-## ⚠️ نکات مهم
-
-1. **Application ID یکتا**: قبل از آپلود در کافه بازار سرچ کنید `ir.taskflowpro.app` وجود نداشته باشد
-2. **فونت Vazirmatn**: حتماً فایل‌های فونت را اضافه کنید
-3. **Keystore**: فایل keystore را هرگز در git قرار ندهید
-4. **flutter_localizations**: اطمینان حاصل کنید که package نصب شده باشد
 
 ---
 
